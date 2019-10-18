@@ -1,0 +1,188 @@
+2019/09/02-11:43 [restartedMain] INFO  com.blcultra.PatentSearchApplication- Starting PatentSearchApplication on LAPTOP-M0F2SC0B with PID 6164 (E:\0PatentSearchProject\patent-search\target\classes started by sgy05 in E:\0PatentSearchProject\patent-search)
+2019/09/02-11:43 [restartedMain] INFO  com.blcultra.PatentSearchApplication- The following profiles are active: prod
+2019/09/02-11:43 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019/09/02-11:43 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019/09/02-11:43 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer- Tomcat initialized with port(s): 8474 (http)
+2019/09/02-11:43 [restartedMain] INFO  org.apache.catalina.core.StandardService- Starting service [Tomcat]
+2019/09/02-11:43 [restartedMain] INFO  org.apache.catalina.core.StandardEngine- Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019/09/02-11:43 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]- Initializing Spring embedded WebApplicationContext
+2019/09/02-11:43 [restartedMain] INFO  org.springframework.web.context.ContextLoader- Root WebApplicationContext: initialization completed in 2372 ms
+2019/09/02-11:43 [restartedMain] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor- Initializing ExecutorService 'applicationTaskExecutor'
+2019/09/02-11:43 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer- LiveReload server is running on port 35729
+2019/09/02-11:43 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer- Tomcat started on port(s): 8474 (http) with context path ''
+2019/09/02-11:43 [restartedMain] INFO  com.blcultra.PatentSearchApplication- Started PatentSearchApplication in 5.002 seconds (JVM running for 6.679)
+2019/09/02-11:43 [http-nio-8474-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019/09/02-11:43 [http-nio-8474-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet- Initializing Servlet 'dispatcherServlet'
+2019/09/02-11:43 [http-nio-8474-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet- Completed initialization in 7 ms
+2019/09/02-11:44 [http-nio-8474-exec-3] INFO  com.blcultra.controller.PatentUserController- UserController  login接口：用户名：wh, 密码：123456 
+2019/09/02-11:44 [http-nio-8474-exec-3] INFO  com.alibaba.druid.pool.DruidDataSource- {dataSource-1} inited
+2019/09/02-11:44 [http-nio-8474-exec-3] DEBUG com.blcultra.dao.PatentUserMapper.selectUserByUserName- ==>  Preparing: SELECT userid,username,pass,telephone,ustate,udesc FROM patent_user WHERE ustate = '1' AND username = ? 
+2019/09/02-11:44 [http-nio-8474-exec-3] DEBUG com.blcultra.dao.PatentUserMapper.selectUserByUserName- ==> Parameters: wh(String)
+2019/09/02-11:44 [http-nio-8474-exec-3] TRACE com.blcultra.dao.PatentUserMapper.selectUserByUserName- <==    Columns: userid, username, pass, telephone, ustate, udesc
+2019/09/02-11:44 [http-nio-8474-exec-3] TRACE com.blcultra.dao.PatentUserMapper.selectUserByUserName- <==        Row: 1, wh, 06bedbd45300f33ffa045bb442415dc6, 18216569848, 1, 审核员
+2019/09/02-11:44 [http-nio-8474-exec-3] DEBUG com.blcultra.dao.PatentUserMapper.selectUserByUserName- <==      Total: 1
+2019/09/02-11:45 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentCollectInfoMapper.insertSelective- ==>  Preparing: insert into patent_collect_info ( collectid, ptype, pdocnum, pdate, pipc, prate, collector, ptermwords, collecttime, updatetime ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019/09/02-11:45 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentCollectInfoMapper.insertSelective- ==> Parameters: d055e8ac486242548130fff5facdafd7(String), Y(String), 201925136589(String), 20190902(String), A/02(String), 80%(String), 1(String), 杯子,水杯,容器(String), 2019-09-02 11:45:25(String), 2019-09-02 11:45:25(String)
+2019/09/02-11:45 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentCollectInfoMapper.insertSelective- <==    Updates: 1
+2019/09/02-11:45 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.updateRecord- ==>  Preparing: update patent_search_history SET pdocnum = ?, updatetime = ? where pid = ? AND pdocnum='0' 
+2019/09/02-11:45 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.updateRecord- ==> Parameters: 201925136589(String), 2019-09-02 11:45:25(String), null
+2019/09/02-11:45 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.updateRecord- <==    Updates: 0
+2019/09/02-11:55 [http-nio-8474-exec-10] WARN  org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver- Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'pid' is not present]
+2019/09/02-11:55 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- ==>  Preparing: SELECT phisid, pid, searchparam, searchtime, pdocnum FROM patent_search_history WHERE pid = ? AND searcher = ? AND pdocnum = ? ORDER BY searchtime ASC 
+2019/09/02-11:55 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- ==> Parameters: 1(String), 1(String), 1(String)
+2019/09/02-11:55 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- <==      Total: 0
+2019/09/02-11:55 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- ==>  Preparing: select collecttime from patent_collect_info where pid =? AND collector =? 
+2019/09/02-11:55 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- ==> Parameters: null, 1(String)
+2019/09/02-11:55 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- <==      Total: 0
+2019/09/02-11:58 [http-nio-8474-exec-5] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- ==>  Preparing: SELECT phisid, pid, searchparam, searchtime, pdocnum FROM patent_search_history WHERE pid = ? AND searcher = ? AND pdocnum = ? ORDER BY searchtime ASC 
+2019/09/02-11:58 [http-nio-8474-exec-5] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- ==> Parameters: 1(String), 1(String), 1(String)
+2019/09/02-11:58 [http-nio-8474-exec-5] TRACE com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- <==    Columns: phisid, pid, searchparam, searchtime, pdocnum
+2019/09/02-11:58 [http-nio-8474-exec-5] TRACE com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- <==        Row: 1, 1, 1, 1, 1
+2019/09/02-11:58 [http-nio-8474-exec-5] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- <==      Total: 1
+2019/09/02-11:58 [http-nio-8474-exec-5] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- ==>  Preparing: select collecttime from patent_collect_info where pid =? AND collector =? 
+2019/09/02-11:58 [http-nio-8474-exec-5] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- ==> Parameters: null, 1(String)
+2019/09/02-11:58 [http-nio-8474-exec-5] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- <==      Total: 0
+2019/09/02-11:59 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- ==>  Preparing: SELECT phisid, pid, searchparam, searchtime, pdocnum FROM patent_search_history WHERE pid = ? AND searcher = ? AND pdocnum = ? ORDER BY searchtime ASC 
+2019/09/02-11:59 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- ==> Parameters: 1(String), 1(String), 1(String)
+2019/09/02-11:59 [http-nio-8474-exec-6] TRACE com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- <==    Columns: phisid, pid, searchparam, searchtime, pdocnum
+2019/09/02-11:59 [http-nio-8474-exec-6] TRACE com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- <==        Row: 1, 1, 1, 1, 1
+2019/09/02-11:59 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- <==      Total: 1
+2019/09/02-11:59 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- ==>  Preparing: select collecttime from patent_collect_info where pid =? AND collector =? 
+2019/09/02-11:59 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- ==> Parameters: null, 1(String)
+2019/09/02-11:59 [http-nio-8474-exec-6] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- <==      Total: 0
+2019/09/02-12:01 [restartedMain] INFO  com.blcultra.PatentSearchApplication- Starting PatentSearchApplication on LAPTOP-M0F2SC0B with PID 10140 (E:\0PatentSearchProject\patent-search\target\classes started by sgy05 in E:\0PatentSearchProject\patent-search)
+2019/09/02-12:01 [restartedMain] INFO  com.blcultra.PatentSearchApplication- The following profiles are active: prod
+2019/09/02-12:01 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019/09/02-12:01 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019/09/02-12:01 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer- Tomcat initialized with port(s): 8474 (http)
+2019/09/02-12:01 [restartedMain] INFO  org.apache.catalina.core.StandardService- Starting service [Tomcat]
+2019/09/02-12:01 [restartedMain] INFO  org.apache.catalina.core.StandardEngine- Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019/09/02-12:01 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]- Initializing Spring embedded WebApplicationContext
+2019/09/02-12:01 [restartedMain] INFO  org.springframework.web.context.ContextLoader- Root WebApplicationContext: initialization completed in 1843 ms
+2019/09/02-12:01 [restartedMain] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor- Initializing ExecutorService 'applicationTaskExecutor'
+2019/09/02-12:01 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer- LiveReload server is running on port 35729
+2019/09/02-12:01 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer- Tomcat started on port(s): 8474 (http) with context path ''
+2019/09/02-12:01 [restartedMain] INFO  com.blcultra.PatentSearchApplication- Started PatentSearchApplication in 3.157 seconds (JVM running for 3.759)
+2019/09/02-12:01 [http-nio-8474-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019/09/02-12:01 [http-nio-8474-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet- Initializing Servlet 'dispatcherServlet'
+2019/09/02-12:01 [http-nio-8474-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet- Completed initialization in 6 ms
+2019/09/02-12:02 [http-nio-8474-exec-2] INFO  com.alibaba.druid.pool.DruidDataSource- {dataSource-1} inited
+2019/09/02-12:02 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- ==>  Preparing: SELECT phisid, pid, searchparam, searchtime, pdocnum FROM patent_search_history WHERE pid = ? AND searcher = ? AND pdocnum = ? ORDER BY searchtime ASC 
+2019/09/02-12:02 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- ==> Parameters: 1(String), 1(String), 1(String)
+2019/09/02-12:02 [http-nio-8474-exec-2] TRACE com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- <==    Columns: phisid, pid, searchparam, searchtime, pdocnum
+2019/09/02-12:02 [http-nio-8474-exec-2] TRACE com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- <==        Row: 1, 1, 1, 1, 1
+2019/09/02-12:02 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentSearchHistoryMapper.getHsitoryList- <==      Total: 1
+2019/09/02-12:02 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- ==>  Preparing: select collecttime from patent_collect_info where pdocnum =? AND collector =? 
+2019/09/02-12:02 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- ==> Parameters: 1(String), 1(String)
+2019/09/02-12:02 [http-nio-8474-exec-2] TRACE com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- <==    Columns: collecttime
+2019/09/02-12:02 [http-nio-8474-exec-2] TRACE com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- <==        Row: 2019-09-02 11:45:25
+2019/09/02-12:02 [http-nio-8474-exec-2] DEBUG com.blcultra.dao.PatentCollectInfoMapper.getCollectInfo- <==      Total: 1
+2019/09/02-14:07 [Thread-6] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor- Shutting down ExecutorService 'applicationTaskExecutor'
+2019/09/02-14:07 [Thread-6] INFO  com.alibaba.druid.pool.DruidDataSource- {dataSource-1} closed
+2019/09/02-14:08 [restartedMain] INFO  com.blcultra.PatentSearchApplication- Starting PatentSearchApplication on LAPTOP-M0F2SC0B with PID 10140 (E:\0PatentSearchProject\patent-search\target\classes started by sgy05 in E:\0PatentSearchProject\patent-search)
+2019/09/02-14:08 [restartedMain] INFO  com.blcultra.PatentSearchApplication- The following profiles are active: prod
+2019/09/02-14:08 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner- No MyBatis mapper was found in '[com.blcultra.dao]' package. Please check your configuration.
+2019/09/02-14:08 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer- Tomcat initialized with port(s): 8474 (http)
+2019/09/02-14:08 [restartedMain] INFO  org.apache.catalina.core.StandardService- Starting service [Tomcat]
+2019/09/02-14:08 [restartedMain] INFO  org.apache.catalina.core.StandardEngine- Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019/09/02-14:08 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat-1].[localhost].[/]- Initializing Spring embedded WebApplicationContext
+2019/09/02-14:08 [restartedMain] INFO  org.springframework.web.context.ContextLoader- Root WebApplicationContext: initialization completed in 398 ms
+2019/09/02-14:08 [restartedMain] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor- Initializing ExecutorService 'applicationTaskExecutor'
+2019/09/02-14:08 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext- Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\0PatentSearchProject\patent-search\target\classes\mapper\PatentCollectInfoMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [E:\0PatentSearchProject\patent-search\target\classes\mapper\PatentCollectInfoMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.blcultra.model.PatentCollectInfo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.blcultra.model.PatentCollectInfo
+2019/09/02-14:08 [restartedMain] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor- Shutting down ExecutorService 'applicationTaskExecutor'
+2019/09/02-14:08 [restartedMain] INFO  org.apache.catalina.core.StandardService- Stopping service [Tomcat]
+2019/09/02-14:08 [restartedMain] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener- 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019/09/02-14:08 [restartedMain] ERROR org.springframework.boot.SpringApplication- Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\0PatentSearchProject\patent-search\target\classes\mapper\PatentCollectInfoMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [E:\0PatentSearchProject\patent-search\target\classes\mapper\PatentCollectInfoMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.blcultra.model.PatentCollectInfo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.blcultra.model.PatentCollectInfo
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:627) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:607) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1321) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1160) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:845) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:877) ~[spring-context-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549) ~[spring-context-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:742) [spring-boot-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:389) [spring-boot-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:311) [spring-boot-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1213) [spring-boot-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1202) [spring-boot-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at com.blcultra.PatentSearchApplication.main(PatentSearchApplication.java:14) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_162]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_162]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_162]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_162]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\0PatentSearchProject\patent-search\target\classes\mapper\PatentCollectInfoMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [E:\0PatentSearchProject\patent-search\target\classes\mapper\PatentCollectInfoMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.blcultra.model.PatentCollectInfo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.blcultra.model.PatentCollectInfo
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:622) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	... 24 common frames omitted
+Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\0PatentSearchProject\patent-search\target\classes\mapper\PatentCollectInfoMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [E:\0PatentSearchProject\patent-search\target\classes\mapper\PatentCollectInfoMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.blcultra.model.PatentCollectInfo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.blcultra.model.PatentCollectInfo
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:596) ~[mybatis-spring-2.0.2.jar:2.0.2]
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:475) ~[mybatis-spring-2.0.2.jar:2.0.2]
+	at org.mybatis.spring.SqlSessionFactoryBean.getObject(SqlSessionFactoryBean.java:616) ~[mybatis-spring-2.0.2.jar:2.0.2]
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration.sqlSessionFactory(MybatisAutoConfiguration.java:180) ~[mybatis-spring-boot-autoconfigure-2.1.0.jar:2.1.0]
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$eceaa9df.CGLIB$sqlSessionFactory$2(<generated>) ~[mybatis-spring-boot-autoconfigure-2.1.0.jar:2.1.0]
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$eceaa9df$$FastClassBySpringCGLIB$$f1a82d62.invoke(<generated>) ~[mybatis-spring-boot-autoconfigure-2.1.0.jar:2.1.0]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244) ~[spring-core-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363) ~[spring-context-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$eceaa9df.sqlSessionFactory(<generated>) ~[mybatis-spring-boot-autoconfigure-2.1.0.jar:2.1.0]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_162]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_162]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_162]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_162]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	... 25 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [E:\0PatentSearchProject\patent-search\target\classes\mapper\PatentCollectInfoMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.blcultra.model.PatentCollectInfo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.blcultra.model.PatentCollectInfo
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:122) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:94) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:594) ~[mybatis-spring-2.0.2.jar:2.0.2]
+	... 38 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.blcultra.model.PatentCollectInfo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.blcultra.model.PatentCollectInfo
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:118) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:262) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:253) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:245) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:118) ~[mybatis-3.5.2.jar:3.5.2]
+	... 40 common frames omitted
+Caused by: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.blcultra.model.PatentCollectInfo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.blcultra.model.PatentCollectInfo
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:120) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.builder.BaseBuilder.resolveAlias(BaseBuilder.java:149) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:116) ~[mybatis-3.5.2.jar:3.5.2]
+	... 44 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.blcultra.model.PatentCollectInfo
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:200) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261) ~[mybatis-3.5.2.jar:3.5.2]
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:116) ~[mybatis-3.5.2.jar:3.5.2]
+	... 46 common frames omitted
+2019/09/02-14:08 [restartedMain] INFO  com.blcultra.PatentSearchApplication- Starting PatentSearchApplication on LAPTOP-M0F2SC0B with PID 10140 (E:\0PatentSearchProject\patent-search\target\classes started by sgy05 in E:\0PatentSearchProject\patent-search)
+2019/09/02-14:08 [restartedMain] INFO  com.blcultra.PatentSearchApplication- The following profiles are active: prod
+2019/09/02-14:08 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer- Tomcat initialized with port(s): 8474 (http)
+2019/09/02-14:08 [restartedMain] INFO  org.apache.catalina.core.StandardService- Starting service [Tomcat]
+2019/09/02-14:08 [restartedMain] INFO  org.apache.catalina.core.StandardEngine- Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019/09/02-14:08 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat-2].[localhost].[/]- Initializing Spring embedded WebApplicationContext
+2019/09/02-14:08 [restartedMain] INFO  org.springframework.web.context.ContextLoader- Root WebApplicationContext: initialization completed in 423 ms
+2019/09/02-14:08 [restartedMain] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor- Initializing ExecutorService 'applicationTaskExecutor'
+2019/09/02-14:08 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer- LiveReload server is running on port 35729
+2019/09/02-14:08 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer- Tomcat started on port(s): 8474 (http) with context path ''
+2019/09/02-14:08 [restartedMain] INFO  com.blcultra.PatentSearchApplication- Started PatentSearchApplication in 0.781 seconds (JVM running for 7579.727)
+2019/09/02-14:08 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener- Condition evaluation unchanged
+2019/09/02-14:08 [main] INFO  com.blcultra.PatentSearchApplicationTests- Starting PatentSearchApplicationTests on LAPTOP-M0F2SC0B with PID 5236 (started by sgy05 in E:\0PatentSearchProject\patent-search)
+2019/09/02-14:08 [main] INFO  com.blcultra.PatentSearchApplicationTests- The following profiles are active: prod
+2019/09/02-14:08 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor- Initializing ExecutorService 'applicationTaskExecutor'
+2019/09/02-14:08 [main] INFO  com.blcultra.PatentSearchApplicationTests- Started PatentSearchApplicationTests in 2.856 seconds (JVM running for 3.879)
+2019/09/02-14:08 [Thread-3] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor- Shutting down ExecutorService 'applicationTaskExecutor'
+2019/09/02-15:41 [main] INFO  com.blcultra.PatentSearchApplicationTests- Starting PatentSearchApplicationTests on LAPTOP-M0F2SC0B with PID 7084 (started by sgy05 in E:\0PatentSearchProject\patent-search)
+2019/09/02-15:41 [main] INFO  com.blcultra.PatentSearchApplicationTests- The following profiles are active: prod
+2019/09/02-15:41 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor- Initializing ExecutorService 'applicationTaskExecutor'
+2019/09/02-15:41 [main] INFO  com.blcultra.PatentSearchApplicationTests- Started PatentSearchApplicationTests in 2.847 seconds (JVM running for 3.807)
+2019/09/02-15:41 [Thread-3] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor- Shutting down ExecutorService 'applicationTaskExecutor'
