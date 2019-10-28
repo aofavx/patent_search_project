@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blcultra.dao.PatentTextDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.blcultra.model.PatentTextDetail" >
+    <id column="ptextid" property="ptextid" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.blcultra.model.PatentTextDetail" extends="BaseResultMap" >
+    <result column="pdetail" property="pdetail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ptextid, pid
+  </sql>
+  <sql id="Blob_Column_List" >
+    pdetail
+  </sql>
+
+  <select id="selectByPid" parameterType="map" resultType="map">
+    SELECT ptd.pdetail
+    FROM patent_text_detail ptd
+    INNER JOIN patent_info pif ON pif.pid = ptd.pid
+    WHERE 1=1
+    <if test="pid != null">
+      AND  pif.pid = #{pid,jdbcType=VARCHAR}
+    </if>
+    <if test="uploader != null">
+      and pif.uploader = #{uploader,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+
+
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from patent_text_detail
+    where ptextid = #{ptextid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from patent_text_detail
+    where ptextid = #{ptextid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.blcultra.model.PatentTextDetail" >
+    insert into patent_text_detail (ptextid, pid, pdetail
+      )
+    values (#{ptextid,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{pdetail,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.blcultra.model.PatentTextDetail" >
+    insert into patent_text_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ptextid != null" >
+        ptextid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="pdetail != null" >
+        pdetail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ptextid != null" >
+        #{ptextid,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="pdetail != null" >
+        #{pdetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blcultra.model.PatentTextDetail" >
+    update patent_text_detail
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="pdetail != null" >
+        pdetail = #{pdetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ptextid = #{ptextid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.blcultra.model.PatentTextDetail" >
+    update patent_text_detail
+    set pid = #{pid,jdbcType=VARCHAR},
+      pdetail = #{pdetail,jdbcType=LONGVARCHAR}
+    where ptextid = #{ptextid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.blcultra.model.PatentTextDetail" >
+    update patent_text_detail
+    set pid = #{pid,jdbcType=VARCHAR}
+    where ptextid = #{ptextid,jdbcType=VARCHAR}
+  </update>
+</mapper>

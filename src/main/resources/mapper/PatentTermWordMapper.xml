@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blcultra.dao.PatentTermWordMapper" >
+  <resultMap id="BaseResultMap" type="com.blcultra.model.PatentTermWord" >
+    <id column="tid" property="tid" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="cid" property="cid" jdbcType="VARCHAR" />
+    <result column="term" property="term" jdbcType="VARCHAR" />
+    <result column="tgrade" property="tgrade" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tid, pid, cid, term, tgrade,uid
+  </sql>
+
+  <select id="selectTermWord" parameterType="map" resultType="map">
+    SELECT tid, pid, cid, term, tgrade,uid
+    FROM  patent_term_word
+    WHERE  pid = #{pid}
+    AND term = #{term}
+    AND uid = #{uid}
+
+  </select>
+  <insert id="batchInsertTerms" parameterType="java.util.List">
+    insert into patent_term_word
+    (tid, pid, cid, term, tgrade,uid)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (
+      #{item.tid},
+      #{item.pid},
+      #{item.cid},
+      #{item.term},
+      #{item.tgrade},
+      #{item.uid}
+      )
+    </foreach>
+  </insert>
+
+
+  <select id="selectTermsByPid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from patent_term_word
+    where pid = #{pid,jdbcType=VARCHAR}
+    ORDER BY tgrade+0 DESC
+  </select>
+
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from patent_term_word
+    where tid = #{tid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from patent_term_word
+    where tid = #{tid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.blcultra.model.PatentTermWord" >
+    insert into patent_term_word (tid, pid, cid, 
+      term, tgrade,uid)
+    values (#{tid,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, 
+      #{term,jdbcType=VARCHAR}, #{tgrade,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.blcultra.model.PatentTermWord" >
+    insert into patent_term_word
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        tid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="term != null" >
+        term,
+      </if>
+      <if test="tgrade != null" >
+        tgrade,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        #{tid,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null" >
+        #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="tgrade != null" >
+        #{tgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blcultra.model.PatentTermWord" >
+    update patent_term_word
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null" >
+        term = #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="tgrade != null" >
+        tgrade = #{tgrade,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.blcultra.model.PatentTermWord" >
+    update patent_term_word
+    set pid = #{pid,jdbcType=VARCHAR},
+      cid = #{cid,jdbcType=VARCHAR},
+      term = #{term,jdbcType=VARCHAR},
+      tgrade = #{tgrade,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=VARCHAR}
+  </update>
+</mapper>
